@@ -1,0 +1,35 @@
+I need help creating a custom validation rule for insurance data analysis in Python. Please guide me through the process step by step.
+Here's what you should know:
+
+The validation system uses Polars DataFrames/LazyFrames for data processing
+Each validation rule is an object with:
+
+A name (string)
+A validation function that takes a DataFrame and column name(s)
+List of columns the rule applies to
+A severity level (ERROR, WARNING, or INFO)
+A custom message for when validation fails
+
+
+
+The validation function should:
+
+Return records that FAIL validation (not ones that pass)
+Use Polars syntax for filtering
+Return a LazyFrame of the failing records
+
+Example of an existing rule:
+ValidationRule(
+    name="premium_not_zero",
+    validation_func=lambda df, col: df.filter((pl.col(col) <= 0) | pl.col(col).is_null()),
+    columns=["premium"],
+    message="Premium must be greater than zero"
+)
+Can you help me create a validation rule for [describe your validation need]? Please include:
+
+What columns are involved
+What conditions indicate a validation failure
+How severe the validation failure should be
+What message should be shown when validation fails
+
+After you provide these details, I can help you construct the appropriate validation rule with proper Polars syntax.

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Data Analysis Report - {{ company_name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .warning {
+            color: #ffc107;
+        }
+        .success {
+            color: #28a745;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Insurance Data Analysis Report</h1>
+            <p><strong>Company:</strong> {{ company_name }}</p>
+            <p><strong>Report Generated:</strong> {{ report_date }}</p>
+        </div>
+
+        <div class="section">
+            <h2>Validation Summary</h2>
+            <p><strong>Total Errors:</strong> <span class="error">{{ validation_summary.total_errors }}</span></p>
+            <p><strong>Total Warnings:</strong> <span class="warning">{{ validation_summary.total_warnings }}</span></p>
+            {% if validation_summary.failed_rules %}
+            <h3>Failed Validation Rules:</h3>
+            <ul>
+                {% for rule in validation_summary.failed_rules %}
+                <li>{{ rule }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Comparison Summary</h2>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Current Year Records</td>
+                    <td>{{ comparison_summary.total_current }}</td>
+                </tr>
+                <tr>
+                    <td>Previous Year Records</td>
+                    <td>{{ comparison_summary.total_previous }}</td>
+                </tr>
+                <tr>
+                    <td>New Records</td>
+                    <td>{{ comparison_summary.new_records }}</td>
+                </tr>
+                <tr>
+                    <td>Lapsed Records</td>
+                    <td>{{ comparison_summary.lapsed_records }}</td>
+                </tr>
+                <tr>
+                    <td>Retention Rate</td>
+                    <td>{{ comparison_summary.retention_rate }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Outlier Summary</h2>
+            <table>
+                <tr>
+                    <th>Column</th>
+                    <th>Outlier Count</th>
+                    <th>Sample Values</th>
+                </tr>
+                {% for column, data in outlier_summary.items() %}
+                <tr>
+                    <td>{{ column }}</td>
+                    <td>{{ data|length }}</td>
+                    <td>{{ data[column].unique()[:5]|join(', ') }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+PolicyNumber,LineOfBusiness,CoverStartDate,CoverEndDate,SumInsured,MonthlyPremium,VehicleMake,VehicleColour
+POL001,Motor,2023/02/23,,350000,350,Toyota,White
+POL002,Motor,2023/06/26,,500000,500,Volkswagen,Silver
+POL003,Motor,2023/06/08,,250000,250,Ford,Black
+POL004,Motor,2023/06/04,,300000,300,Hyundai,Grey
+POL005,Motor,2023/03/04,,300000,300,Nissan,Blue
+POL006,Motor,2023/03/03,,1100000,1100,Isuzu,Red
+POL007,Motor,2023/06/19,,350000,350,BMW,Gold
+POL008,Motor,2023/02/18,,1100000,1100,Mercedes-Benz,Maroon
+POL009,Motor,2023/01/30,,1150000,1150,Kia,Brown
+POL010,Motor,2022/12/12,,500000,500,Renault,Green
+POL011,Motor,2022/08/04,,950000,950,Mazda,Beige
+POL012,Motor,2022/09/05,,500000,500,Suzuki,Yellow
+POL013,Motor,2023/02/15,,600000,600,Honda,Orange
+POL014,Motor,2022/08/02,,1150000,1150,Chevrolet,Purple
+POL015,Motor,2022/07/19,,700000,700,Haval,Cream
+POL016,Motor,2022/12/28,,850000,850,Mitsubishi,Dark Blue
+POL017,Motor,2023/05/24,,400000,400,Peugeot,Light Blue
+POL018,Motor,2023/06/05,,700000,700,Fiat,Teal
+POL019,Motor,2022/10/24,,750000,750,Audi,Bronze
+POL020,Motor,2023/01/26,,1150000,1150,Volvo,Champagne

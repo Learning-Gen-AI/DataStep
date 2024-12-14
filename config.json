@@ -1,0 +1,39 @@
+{
+    "primary_keys": ["PolicyNumber"],
+    "files": {
+        "current_year": "data/insurance_data_2024.csv",
+        "previous_year": "data/insurance_data_2023.csv"
+    },
+    "loader": {
+        "encoding": "utf8"
+    },
+    "outlier": {
+        "percentile_threshold": 10.0,
+        "rare_category_threshold": 1.0
+    },
+    "comparison": {
+        "join_type": "outer"
+    },
+    "validator": {
+        "date_format": "%Y-%m-%d",
+        "gender_values": ["M", "F", "X"],
+        "min_premium": 100.0,
+        "custom_rules": {
+            "age_limit": {
+                "func": "lambda df, cols: df.filter(pl.col(cols[0]) > 99)",
+                "columns": ["age"],
+                "severity": "warning",
+                "message": "Age exceeds 99 years"
+            }
+        }
+    },
+    "reporter": {
+        "output_dir": "reports",
+        "company_name": "Insurance Co Ltd",
+        "report_formats": ["csv", "json", "html"],
+        "include_charts": true
+    },
+    "llm_validator": {
+        "ollama_url": "http://localhost:11434"
+    }
+}
